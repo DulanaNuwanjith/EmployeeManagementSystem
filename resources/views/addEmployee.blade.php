@@ -271,7 +271,7 @@
         </div>
     </div>
         <div class="bg-white p-6 mt-6 rounded shadow">
-            <h2 class="text-xl font-semibold mb-4">Service Experience</h2>
+            <h2 class="text-xl text-amber-900 font-semibold mb-4">Service Experience</h2>
             <div id="service-experience-container" class="space-y-6">
                 <div class="service-experience-entry border p-4 rounded relative">
                 <h3 class="text-lg font-semibold mb-4 service-number">Service Experience 1</h3>
@@ -305,7 +305,7 @@
 
 
         <div class="bg-white p-6 mt-6 rounded shadow">
-  <h2 class="text-xl font-semibold mb-4">Family Details</h2>
+  <h2 class="text-xl text-amber-900 font-semibold mb-4">Family Details</h2>
 
   <div id="family-details-container" class="space-y-6">
     <div class="family-member-entry border p-4 rounded">

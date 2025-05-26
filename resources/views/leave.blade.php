@@ -57,11 +57,29 @@
                     <td class="px-4 py-2 w-40 border">Sick</td>
 
                     <!-- End Employment Button -->
+                   <!-- Button -->
                     <td class="px-4 py-2 w-40 border">
-                        <button class="bg-red-500 text-white text-sm px-3 py-1 rounded hover:bg-red-600 transition">
-                        Cancel Leave
+                        <button
+                            class="bg-red-500 text-white text-sm px-3 py-1 rounded hover:bg-red-600 transition"
+                            onclick="openModal()"
+                        >
+                            Cancel Leave
                         </button>
                     </td>
+
+                    <!-- Modal -->
+                    <!-- Modal -->
+                    <div id="confirmModal" class="fixed inset-0 items-center justify-center bg-black bg-opacity-50 hidden">
+                    <div class="bg-white rounded-lg p-6 w-96 shadow-lg">
+                        <h2 class="text-lg font-semibold mb-4">Confirm Cancellation</h2>
+                        <p class="mb-6">Are you sure you want to cancel this leave?</p>
+                        <div class="flex justify-end gap-3">
+                        <button onclick="closeModal()" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">No</button>
+                        <button onclick="cancelLeave()" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Yes, Cancel</button>
+                        </div>
+                    </div>
+                    </div>
+
                 </tr>
 
 
@@ -79,4 +97,23 @@
 </body>
 </html>
 
+
+<script>
+  function openModal() {
+    const modal = document.getElementById('confirmModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('confirmModal');
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+  }
+
+  function cancelLeave() {
+    closeModal();
+    alert('Leave cancelled.'); // Replace with actual delete logic
+  }
+</script>
 

@@ -60,10 +60,26 @@
 
                     <!-- End Employment Button -->
                     <td class="px-4 py-2 w-40 border">
-                        <button class="bg-red-500 text-white text-sm px-3 py-1 rounded hover:bg-red-600 transition">
-                        End Employment
+                        <button
+                            class="bg-red-500 text-white text-sm px-3 py-1 rounded hover:bg-red-600 transition"
+                            onclick="openModal('Are you sure you want to end this employment?', handleEndEmployment)"
+                        >
+                            End Employment
                         </button>
                     </td>
+                    <!-- Reusable Confirmation Modal -->
+                    <div id="confirmModal" class="fixed inset-0 items-center justify-center bg-black bg-opacity-50 hidden">
+                        <div class="bg-white rounded-lg p-6 w-96 shadow-lg">
+                            <h2 class="text-lg font-semibold mb-4">Confirmation</h2>
+                            <p id="modalMessage" class="mb-6">Are you sure?</p>
+                            <div class="flex justify-end gap-3">
+                            <button onclick="closeModal()" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">No</button>
+                            <button id="confirmBtn" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Yes, Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </tr>
 
 
@@ -82,3 +98,41 @@
 </html>
 
 
+<script>
+  let confirmAction = null;
+
+  function openModal(message, action) {
+    const modal = document.getElementById('confirmModal');
+    const messageElement = document.getElementById('modalMessage');
+    const confirmBtn = document.getElementById('confirmBtn');
+
+    // Set message
+    messageElement.textContent = message;
+
+    // Set action
+    confirmAction = action;
+    confirmBtn.onclick = function () {
+      if (confirmAction) confirmAction();
+      closeModal();
+    };
+
+    // Show modal
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('confirmModal');
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+  }
+
+  // Your actual action function
+  function cancelLeave() {
+    alert('Leave cancelled!'); // Replace with actual cancellation logic
+  }
+
+  function handleEndEmployment() {
+    alert('Employment ended!'); // Replace with real logic
+  }
+</script>

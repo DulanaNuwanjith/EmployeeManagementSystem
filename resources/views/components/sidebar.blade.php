@@ -38,6 +38,18 @@
           <span>Leave Management</span>
         </a>
       </li>
+      <li>
+        <a href="addUsers" class="flex items-center px-4 py-2 rounded hover:bg-gray-200">
+          <img src="{{ asset('icons/adduser.png') }}" alt="Leave Icon" class="w-6 h-6 mr-5" />
+          <span>Add Users</span>
+        </a>
+      </li>
+      <li>
+        <a href="login" class="flex items-center px-4 py-2 rounded hover:bg-gray-200">
+          <img src="{{ asset('icons/adduser.png') }}" alt="Leave Icon" class="w-6 h-6 mr-5" />
+          <span>Login</span>
+        </a>
+      </li>
     </ul>
 
     <!-- Fixed logout section at the bottom -->

@@ -25,3 +25,11 @@ Route::get('leave', function () {
 Route::get('addLeave', function () {
     return view('addLeave');
 });
+
+Route::get('addUsers', function () {
+    return view('addUsers');
+});
+
+Route::get('login', function () {
+    return view('login');
+});

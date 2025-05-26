@@ -31,7 +31,7 @@
 
       <!-- Role -->
       <div class="relative inline-block w-full text-left col-span-1 mb-6 ">
-        <label for="roleDropdown" class="block text-sm text-gray-600 mb-1 font-semibold">Role</label>
+        <label for="roleDropdown" class="block mb-2 font-semibold text-gray-700">Role</label>
         <div>
             <button
             type="button"

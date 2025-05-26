@@ -1,9 +1,8 @@
-<!-- resources/views/layouts/app.blade.php -->
 <!DOCTYPE html>
 <html lang="en" x-data="{}">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>@yield('title', 'StretchTec')</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -18,6 +17,9 @@
   <main class="flex-1 p-6">
     @yield('content')
   </main>
+
+  <!-- Scripts -->
+  @yield('scripts')
 
 </body>
 </html>

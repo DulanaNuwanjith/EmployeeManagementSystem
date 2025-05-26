@@ -24,15 +24,34 @@
 <form action="/submitLeave" method="POST" class="bg-white p-6 rounded shadow grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
     @csrf
 
-    <div class="md:col-span-2">
-    <label class="block font-medium text-gray-700 mb-1">Select Employee</label>
-    <select name="employee" class="w-full p-2 border rounded" required>
-        <option value="" disabled selected>Select an employee</option>
-        <option value="EMP001">EMP001 - Dulana Polgampala</option>
-        <option value="EMP002">EMP002 - Nimesha Perera</option>
-        <option value="EMP003">EMP003 - Kavindu Silva</option>
-    </select>
+    <div class="md:col-span-2 relative inline-block w-full text-left mb-1">
+    <label for="employeeDropdown" class="block mb-2 font-semibold text-gray-700">Select Employee</label>
+
+    <button
+        type="button"
+        id="employeeDropdown"
+        class="inline-flex w-full justify-between rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-gray-300 hover:bg-gray-50 h-10"
+        onclick="toggleEmployeeDropdown()"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+    >
+        <span id="selectedEmployee">Select an employee</span>
+        <svg class="ml-2 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.25 8.29a.75.75 0 0 1-.02-1.08z" clip-rule="evenodd" />
+        </svg>
+    </button>
+
+    <div id="employeeDropdownMenu" class="hidden absolute z-10 mt-2 w-full rounded-md bg-white shadow-lg ring-1 ring-black/5">
+        <div class="py-1" role="listbox" tabindex="-1" aria-labelledby="employeeDropdown">
+        <button type="button" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="selectEmployee('EMP001', 'Dulana Polgampala')">EMP001 - Dulana Polgampala</button>
+        <button type="button" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="selectEmployee('EMP002', 'Nimesha Perera')">EMP002 - Nimesha Perera</button>
+        <button type="button" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="selectEmployee('EMP003', 'Kavindu Silva')">EMP003 - Kavindu Silva</button>
+        </div>
     </div>
+
+    <input type="hidden" name="employee" id="employeeInput" required>
+    </div>
+
 
     <div>
     <label class="block font-medium text-gray-700 mb-1">Start Date</label>
@@ -68,3 +87,32 @@
 
 </body>
 </html>
+
+
+<script>
+function toggleEmployeeDropdown() {
+  const menu = document.getElementById('employeeDropdownMenu');
+  menu.classList.toggle('hidden');
+
+  const btn = document.getElementById('employeeDropdown');
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !expanded);
+}
+
+function selectEmployee(empId, empName) {
+  document.getElementById('selectedEmployee').innerText = `${empId} - ${empName}`;
+  document.getElementById('employeeInput').value = empId;
+  document.getElementById('employeeDropdownMenu').classList.add('hidden');
+  document.getElementById('employeeDropdown').setAttribute('aria-expanded', false);
+}
+
+// Close employee dropdown on outside click
+document.addEventListener('click', function (e) {
+  const empBtn = document.getElementById('employeeDropdown');
+  const empMenu = document.getElementById('employeeDropdownMenu');
+  if (!empBtn.contains(e.target) && !empMenu.contains(e.target)) {
+    empMenu.classList.add('hidden');
+    empBtn.setAttribute('aria-expanded', false);
+  }
+});
+</script>

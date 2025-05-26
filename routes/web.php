@@ -3,33 +3,33 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('dashboard');
+return view('dashboard');
 });
 
 Route::get('employee', function () {
-    return view('employee');
+return view('employee');
 });
 
 Route::get('employeeProfile', function () {
-    return view('employeeProfile');
+return view('employeeProfile');
 });
 
 Route::get('addEmployee', function () {
-    return view('addEmployee');
+return view('addEmployee');
 });
 
 Route::get('leave', function () {
-    return view('leave');
+return view('leave');
 });
 
 Route::get('addLeave', function () {
-    return view('addLeave');
+return view('addLeave');
 });
 
 Route::get('addUsers', function () {
-    return view('addUsers');
+return view('addUsers');
 });
 
 Route::get('login', function () {
-    return view('login');
+return view('login');
 });

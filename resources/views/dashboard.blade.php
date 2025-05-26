@@ -29,9 +29,9 @@
 </div>
 
 <!-- Department-wise Bar Chart -->
-<h2 class="text-xl text-amber-900 font-semibold mb-4">Employee Distribution by Department</h2>
+<h2 class="text-xl text-amber-900 font-semibold mb-8">Employee Distribution by Department</h2>
 <div class="flex justify-center">
-  <div style="width: 700px; height: 400px;">
+  <div class="bg-white p-4 rounded shadow" style="width: 700px; height: 400px;">
     <canvas id="employeeChart" width="700" height="400"></canvas>
   </div>
 </div>

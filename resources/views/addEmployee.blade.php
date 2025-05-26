@@ -16,23 +16,12 @@
   <!-- Main Content -->
     <div class="flex-1 overflow-y-auto p-8" x-data="{ editing: false }">
         <div class="bg-white p-6 rounded shadow">
-        <!-- Buttons -->
-            <div class="flex justify-end space-x-4 mb-6">
-                <button
-                type="button"
-                @click="editing = !editing"
-                class="bg-amber-500 text-white px-6 py-2 rounded hover:bg-amber-600 transition"
-                >
-                <span x-text="editing ? 'Cancel' : 'Edit Employee Details'"></span>
-                </button>
-                <button
-                type="submit"
-                x-show="editing"
-                class="bg-amber-500 text-white px-6 py-2 rounded hover:bg-amber-600 transition"
-                >
-                Save
-                </button>
-            </div>
+        <!-- Submit -->
+        <div class="col-span-5 flex justify-end mt-4 mb-4 md:mt-0">
+            <a href="addEmployee" class="bg-amber-500 text-white px-6 py-2 rounded hover:bg-amber-600 transition">
+                Create Employee
+            </a>
+        </div>
 
             <!-- Profile Image and Name -->
             <div class="flex items-center space-x-6 mb-8">

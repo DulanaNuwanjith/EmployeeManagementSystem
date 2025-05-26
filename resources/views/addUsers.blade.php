@@ -29,6 +29,40 @@
         />
       </div>
 
+      <!-- Role -->
+      <div class="relative inline-block w-full text-left col-span-1 mb-6 ">
+        <label for="roleDropdown" class="block text-sm text-gray-600 mb-1 font-semibold">Role</label>
+        <div>
+            <button
+            type="button"
+            id="roleDropdown"
+            class="inline-flex w-full justify-between rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-gray-300 hover:bg-gray-50 h-10"
+            onclick="toggleRoleDropdown()"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            >
+            <span id="selectedRole">Select a role</span>
+            <svg class="ml-2 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.25 8.29a.75.75 0 0 1-.02-1.08z" clip-rule="evenodd" />
+            </svg>
+            </button>
+        </div>
+
+        <div id="roleDropdownMenu" class="hidden absolute z-10 mt-2 w-full rounded-md bg-white shadow-lg ring-1 ring-black/5">
+            <div class="py-1" role="listbox" tabindex="-1" aria-labelledby="roleDropdown">
+            <button type="button" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="selectRole('Admin')">Admin</button>
+            <button type="button" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="selectRole('HR')">HR</button>
+            </div>
+        </div>
+
+        <input type="hidden" name="role" id="roleInput" required>
+
+        <!-- Optionally, error message for validation -->
+        {{-- @error('role') --}}
+        {{-- <p class="text-sm text-red-500 mt-1">{{ $message }}</p> --}}
+        {{-- @enderror --}}
+      </div>
+
       <!-- Password -->
       <div class="mb-6 relative">
         <label for="password" class="block mb-2 font-semibold text-gray-700">Password</label>
@@ -75,21 +109,6 @@
               d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
           </svg>
         </button>
-      </div>
-
-      <!-- Role -->
-      <div class="mb-6">
-        <label for="role" class="block mb-2 font-semibold text-gray-700">Role</label>
-        <select
-          id="role"
-          name="role"
-          class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
-          required
-        >
-          <option value="" disabled selected>Select a role</option>
-          <option value="Admin">Admin</option>
-          <option value="HR">HR</option>
-        </select>
       </div>
 
       <!-- Submit Button -->
@@ -152,3 +171,32 @@
 
 </body>
 </html>
+
+
+<script>
+  function toggleRoleDropdown() {
+    const menu = document.getElementById('roleDropdownMenu');
+    menu.classList.toggle('hidden');
+
+    const btn = document.getElementById('roleDropdown');
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+  }
+
+  function selectRole(role) {
+    document.getElementById('selectedRole').innerText = role;
+    document.getElementById('roleInput').value = role;
+    document.getElementById('roleDropdownMenu').classList.add('hidden');
+    document.getElementById('roleDropdown').setAttribute('aria-expanded', false);
+  }
+
+  // Close dropdown if click outside
+  document.addEventListener('click', function (e) {
+    const roleBtn = document.getElementById('roleDropdown');
+    const roleMenu = document.getElementById('roleDropdownMenu');
+    if (!roleBtn.contains(e.target) && !roleMenu.contains(e.target)) {
+      roleMenu.classList.add('hidden');
+      roleBtn.setAttribute('aria-expanded', false);
+    }
+  });
+</script>

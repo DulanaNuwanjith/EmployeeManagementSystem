@@ -69,36 +69,78 @@
                 </div>
 
                 <!-- Gender -->
-                <div class="flex-1 min-w-[300px]">
-                <label class="block text-sm font-medium text-gray-700">Gender</label>
-                <select class="mt-1 p-2 border rounded w-full">
-                    <option value="" disabled selected>Select gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
+                <div class="relative inline-block  text-left flex-1 min-w-[300px]">
+                <label for="genderDropdown" class="block text-sm font-semibold text-gray-700 mb-1">Gender</label>
+                <div>
+                    <button
+                    type="button"
+                    id="genderDropdown"
+                    class="inline-flex w-full justify-between rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-gray-300 hover:bg-gray-50 h-10"
+                    onclick="toggleGenderDropdown()"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    >
+                    <span id="selectedGender">Select gender</span>
+                    <svg class="ml-2 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.25 8.29a.75.75 0 0 1-.02-1.08z" clip-rule="evenodd" />
+                    </svg>
+                    </button>
+                </div>
+
+                <div id="genderDropdownMenu" class="hidden absolute z-10 mt-2 w-full rounded-md bg-white shadow-lg ring-1 ring-black/5">
+                    <div class="py-1" role="listbox" tabindex="-1" aria-labelledby="genderDropdown">
+                    <button type="button" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="selectGender('Male')">Male</button>
+                    <button type="button" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="selectGender('Female')">Female</button>
+                    <button type="button" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="selectGender('Other')">Other</button>
+                    </div>
+                </div>
+
+                <input type="hidden" name="gender" id="genderInput" required>
+
+                {{-- @error('gender') --}}
+                {{-- <p class="text-sm text-red-500 mt-1">{{ $message }}</p> --}}
+                {{-- @enderror --}}
                 </div>
 
                 <!-- Civil Status -->
-                <div class="flex-1 min-w-[300px]">
-                <label class="block text-sm font-medium text-gray-700">Civil Status</label>
-                <select class="mt-1 p-2 border rounded w-full">
-                    <option value="" disabled selected>Select civil status</option>
-                    <option value="single">Single</option>
-                    <option value="married">Married</option>
-                </select>
+                <div class="relative inline-block text-left flex-1 min-w-[300px]">
+                <label for="civilStatusDropdown" class="block text-sm font-semibold text-gray-700 mb-1">Civil Status</label>
+                <div>
+                    <button
+                    type="button"
+                    id="civilStatusDropdown"
+                    class="inline-flex w-full justify-between rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-gray-300 hover:bg-gray-50 h-10"
+                    onclick="toggleCivilStatusDropdown()"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    >
+                    <span id="selectedCivilStatus">Select civil status</span>
+                    <svg class="ml-2 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.25 8.29a.75.75 0 0 1-.02-1.08z" clip-rule="evenodd" />
+                    </svg>
+                    </button>
                 </div>
 
-                <!-- NIC -->
-                <div class="flex-1 min-w-[300px]">
-                <label class="block text-sm font-medium text-gray-700">NIC</label>
-                <input type="text" value="" placeholder="Enter NIC" class="mt-1 p-2 border rounded w-full" />
+                <div id="civilStatusDropdownMenu" class="hidden absolute z-10 mt-2 w-full rounded-md bg-white shadow-lg ring-1 ring-black/5">
+                    <div class="py-1" role="listbox" tabindex="-1" aria-labelledby="civilStatusDropdown">
+                    <button type="button" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="selectCivilStatus('Single')">Single</button>
+                    <button type="button" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="selectCivilStatus('Married')">Married</button>
+                    </div>
+                </div>
+
+                <input type="hidden" name="civil_status" id="civilStatusInput" required>
                 </div>
 
                 <!-- Address -->
                 <div class="w-full">
                 <label class="block text-sm font-medium text-gray-700">Address</label>
                 <textarea placeholder="Enter address" class="mt-1 p-2 border rounded w-full"></textarea>
+                </div>
+
+                <!-- NIC -->
+                <div class="flex-1 min-w-[300px]">
+                <label class="block text-sm font-medium text-gray-700">NIC</label>
+                <input type="text" value="" placeholder="Enter NIC" class="mt-1 p-2 border rounded w-full" />
                 </div>
 
                 <!-- Contact Number -->
@@ -381,4 +423,60 @@
 
   // Initialize numbering
   updateFamilyNumbering();
+</script>
+
+<script>
+  function toggleGenderDropdown() {
+    const menu = document.getElementById('genderDropdownMenu');
+    menu.classList.toggle('hidden');
+
+    const btn = document.getElementById('genderDropdown');
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+  }
+
+  function selectGender(gender) {
+    document.getElementById('selectedGender').innerText = gender;
+    document.getElementById('genderInput').value = gender;
+    document.getElementById('genderDropdownMenu').classList.add('hidden');
+    document.getElementById('genderDropdown').setAttribute('aria-expanded', false);
+  }
+
+  // Close dropdown on outside click
+  document.addEventListener('click', function (e) {
+    const genderBtn = document.getElementById('genderDropdown');
+    const genderMenu = document.getElementById('genderDropdownMenu');
+    if (!genderBtn.contains(e.target) && !genderMenu.contains(e.target)) {
+      genderMenu.classList.add('hidden');
+      genderBtn.setAttribute('aria-expanded', false);
+    }
+  });
+</script>
+
+<script>
+  function toggleCivilStatusDropdown() {
+    const menu = document.getElementById('civilStatusDropdownMenu');
+    menu.classList.toggle('hidden');
+
+    const btn = document.getElementById('civilStatusDropdown');
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+  }
+
+  function selectCivilStatus(status) {
+    document.getElementById('selectedCivilStatus').innerText = status;
+    document.getElementById('civilStatusInput').value = status;
+    document.getElementById('civilStatusDropdownMenu').classList.add('hidden');
+    document.getElementById('civilStatusDropdown').setAttribute('aria-expanded', false);
+  }
+
+  // Optional: Add to your existing outside click handler
+  document.addEventListener('click', function (e) {
+    const statusBtn = document.getElementById('civilStatusDropdown');
+    const statusMenu = document.getElementById('civilStatusDropdownMenu');
+    if (!statusBtn.contains(e.target) && !statusMenu.contains(e.target)) {
+      statusMenu.classList.add('hidden');
+      statusBtn.setAttribute('aria-expanded', false);
+    }
+  });
 </script>

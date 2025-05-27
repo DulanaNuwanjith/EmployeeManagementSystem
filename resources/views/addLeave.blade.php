@@ -43,7 +43,7 @@
 
         <div id="employeeDropdownMenu" class="hidden absolute z-10 mt-2 w-full rounded-md bg-white shadow-lg ring-1 ring-black/5">
             <div class="p-2">
-                <input type="text" id="employeeSearch" onkeyup="filterEmployees()" placeholder="Search..." class="w-full px-3 py-1 text-sm border rounded-md border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                <input type="text" id="employeeSearch" onkeyup="filterEmployees()" placeholder="Search..." class="w-full px-3 py-1 text-sm border rounded-md border-gray-300 focus:outline-none focus:ring-1 focus:ring-amber-500">
             </div>
             <div class="py-1 max-h-40 overflow-y-auto" role="listbox" tabindex="-1" aria-labelledby="employeeDropdown" id="employeeList">
                 <button type="button" class="employee-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="selectEmployee('EMP001', 'Dulana Polgampala')">EMP001 - Dulana Polgampala</button>

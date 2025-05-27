@@ -26,3 +26,8 @@ Route::view('addUsers', 'addUsers')->name('addUsers');
 // Route::middleware(['authCheck'])->group(function () {
 
 // });
+
+// use App\Http\Controllers\EmployeeController;
+
+Route::post('addEmployee', [EmployeeController::class, 'store'])->name('employee.store');
+

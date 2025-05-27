@@ -26,39 +26,43 @@
     </li>
 
     <li>
-    <a href="employee" class="flex items-center px-4 py-2 rounded hover:bg-gray-200">
+    <a href="{{ route('employee') }}" class="flex items-center px-4 py-2 rounded hover:bg-gray-200">
         <img src="{{ asset('icons/employee.png') }}" alt="Employee Icon" class="w-6 h-6 mr-5" />
         <span>Employee Management</span>
     </a>
     </li>
 
     <li>
-    <a href="leave" class="flex items-center px-4 py-2 rounded hover:bg-gray-200">
+    <a href="{{ route('leave') }}" class="flex items-center px-4 py-2 rounded hover:bg-gray-200">
         <img src="{{ asset('icons/mail.png') }}" alt="Leave Icon" class="w-6 h-6 mr-5" />
         <span>Leave Management</span>
     </a>
     </li>
     <li>
-    <a href="addUsers" class="flex items-center px-4 py-2 rounded hover:bg-gray-200">
+    <a href="{{ route('addUsers') }}" class="flex items-center px-4 py-2 rounded hover:bg-gray-200">
         <img src="{{ asset('icons/adduser.png') }}" alt="Leave Icon" class="w-6 h-6 mr-5" />
         <span>Add Users</span>
     </a>
     </li>
     <li>
-    <a href="login" class="flex items-center px-4 py-2 rounded hover:bg-gray-200">
+    <!-- <a href="login" class="flex items-center px-4 py-2 rounded hover:bg-gray-200">
         <img src="{{ asset('icons/adduser.png') }}" alt="Leave Icon" class="w-6 h-6 mr-5" />
         <span>Login</span>
     </a>
-    </li>
+    </li> -->
 </ul>
 
 <!-- Fixed logout section at the bottom -->
-<div class="pt-4 border-t mt-4">
-    <a href="#" class="flex items-center px-4 py-2 rounded hover:bg-gray-200 text-amber-900">
-    <img src="{{ asset('icons/close.png') }}" alt="Logout Icon" class="w-6 h-6 mr-6" />
-    <span>Logout</span>
-    </a>
+<div class=" border-t mt-4 rounded hover:bg-gray-200">
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit" class="flex items-center px-4 py-2 rounded mt-1 hover:bg-gray-200 text-amber-900">
+            <img src="{{ asset('icons/close.png') }}" alt="Logout Icon" class="w-6 h-6 mr-6" />
+            <span>Logout</span>
+        </button>
+    </form>
 </div>
+
 </nav>
 </aside>
 

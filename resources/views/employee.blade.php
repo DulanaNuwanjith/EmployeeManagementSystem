@@ -16,7 +16,7 @@
 <h2 class="text-2xl font-bold text-amber-900 mb-6">Employee Management</h2>
     <!-- Submit -->
     <div class="col-span-5 flex justify-end mt-4 mb-4 md:mt-0">
-        <a href="addEmployee" class="bg-amber-500 text-white px-6 py-2 rounded hover:bg-amber-600 transition">
+        <a href="{{ url('addEmployee') }}" class="bg-amber-500 text-white px-6 py-2 rounded hover:bg-amber-600 transition">
             Add Employee
         </a>
     </div>
@@ -42,12 +42,12 @@
             <!-- Sample Row -->
             <tr class="text-center">
                 <td class="px-4 py-2 w-40 border">
-                    <a href="/employeeProfile" class="text-black hover:text-amber-900 hover:underline transition">
+                    <a href="{{ url('employeeProfile') }}" class="text-black hover:text-amber-900 hover:underline transition">
                     EMP001
                     </a>
                 </td>
                 <td class="px-4 py-2 w-40 border">
-                    <a href="/employeeProfile" class="text-black hover:text-amber-900 hover:underline transition">
+                    <a href="{{ url('employeeProfile') }}" class="text-black hover:text-amber-900 hover:underline transition">
                     Dulana Nuwanjith Polgampala
                     </a>
                 </td>

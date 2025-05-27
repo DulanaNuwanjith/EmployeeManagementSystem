@@ -1,35 +1,28 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-return view('dashboard');
+    if (!session()->has('logged_in')) {
+        return redirect('login');
+    }
+    return view('dashboard');
 });
 
-Route::get('employee', function () {
-return view('employee');
-});
+// Public routes
+Route::get('login', [LoginController::class, 'showLogin'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout'); // ← keep this outside middleware
 
-Route::get('employeeProfile', function () {
-return view('employeeProfile');
-});
+Route::view('employee', 'employee')->name('employee');
+Route::view('leave', 'leave')->name('leave');
+Route::view('employeeProfile', 'employeeProfile')->name('employeeProfile');
+Route::view('addEmployee', 'addEmployee')->name('addEmployee');
+Route::view('addLeave', 'addLeave')->name('addLeave');
+Route::view('addUsers', 'addUsers')->name('addUsers');
 
-Route::get('addEmployee', function () {
-return view('addEmployee');
-});
 
-Route::get('leave', function () {
-return view('leave');
-});
+// Route::middleware(['authCheck'])->group(function () {
 
-Route::get('addLeave', function () {
-return view('addLeave');
-});
-
-Route::get('addUsers', function () {
-return view('addUsers');
-});
-
-Route::get('login', function () {
-return view('login');
-});
+// });

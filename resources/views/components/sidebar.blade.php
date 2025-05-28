@@ -53,15 +53,16 @@
 </ul>
 
 <!-- Fixed logout section at the bottom -->
-<div class=" border-t mt-4 rounded hover:bg-gray-200">
+<div class="border-t mt-4 rounded">
     <form action="{{ route('logout') }}" method="POST">
         @csrf
-        <button type="submit" class="flex items-center px-4 py-2 rounded mt-1 hover:bg-gray-200 text-amber-900">
-            <img src="{{ asset('icons/close.png') }}" alt="Logout Icon" class="w-6 h-6 mr-6" />
-            <span>Logout</span>
+        <button type="submit" class="w-full flex items-center px-4 py-3 rounded hover:bg-gray-200 text-amber-900">
+            <img src="{{ asset('icons/close.png') }}" alt="Logout Icon" class="w-6 h-6 mr-4" />
+            <span class="flex-1 text-left">Logout</span>
         </button>
     </form>
 </div>
+
 
 </nav>
 </aside>
